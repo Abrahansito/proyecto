@@ -83,8 +83,8 @@ export class Home implements OnInit {
 
   allServices = [
     {
-      name: 'Alev Constructores',
-      title: 'Construcción de viviendas, remodelaciones, ampliaciones',
+      name: 'Alev Constructores "Complementos para la construcción"',
+      title: 'Construcción de viviendas, remodelaciones, ampliaciones entre otros proyectos',
       image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=300&auto=format&fit=crop',
       rating: 4.9,
       reviews: 158,
@@ -94,7 +94,7 @@ export class Home implements OnInit {
       location: 'La Molina • Surco, Miraflores'
     },
     {
-      name: 'TechBuild Perú',
+      name: 'TechBuild Perú "Técnicos en Construcción Civil"',
       title: 'Especialistas en estructuras y acabados de alta calidad',
       image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=300&auto=format&fit=crop',
       rating: 4.8,
@@ -105,8 +105,8 @@ export class Home implements OnInit {
       location: 'San Isidro • Lince, Jesús María'
     },
     {
-        name: 'Arquitectura Total',
-        title: 'Proyectos arquitectónicos completos desde el diseño',
+        name: 'Arquitectura Total "Diseño y Construcción Integral"',
+        title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=300&auto=format&fit=crop',
         rating: 4.7,
         reviews: 89,
@@ -116,8 +116,8 @@ export class Home implements OnInit {
         location: 'Miraflores • Barranco, Chorrillos'
       },
       {
-      name: 'Alev Constructores',
-      title: 'Construcción de viviendas, remodelaciones, ampliaciones',
+      name: 'Alev Constructores "Complementos para la construcción"',
+      title: 'Construcción de viviendas, remodelaciones, ampliaciones entre otros proyectos',
       image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=300&auto=format&fit=crop',
       rating: 4.9,
       reviews: 158,
@@ -127,7 +127,7 @@ export class Home implements OnInit {
       location: 'La Molina • Surco, Miraflores'
     },
     {
-      name: 'TechBuild Perú',
+      name: 'TechBuild Perú "Técnicos en Construcción Civil"',
       title: 'Especialistas en estructuras y acabados de alta calidad',
       image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=300&auto=format&fit=crop',
       rating: 4.8,
@@ -138,8 +138,8 @@ export class Home implements OnInit {
       location: 'San Isidro • Lince, Jesús María'
     },
     {
-        name: 'Arquitectura Total',
-        title: 'Proyectos arquitectónicos completos desde el diseño',
+        name: 'Arquitectura Total "Diseño y Construcción Integral"',
+        title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=300&auto=format&fit=crop',
         rating: 4.7,
         reviews: 89,
@@ -149,7 +149,7 @@ export class Home implements OnInit {
         location: 'Miraflores • Barranco, Chorrillos'
       },
       {
-      name: 'Alev Constructores',
+      name: 'Alev Constructores "Complementos para la construcción"',
       title: 'Construcción de viviendas, remodelaciones, ampliaciones',
       image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=300&auto=format&fit=crop',
       rating: 4.9,
@@ -160,7 +160,7 @@ export class Home implements OnInit {
       location: 'La Molina • Surco, Miraflores'
     },
     {
-      name: 'TechBuild Perú',
+      name: 'TechBuild Perú "Técnicos en Construcción Civil"',
       title: 'Especialistas en estructuras y acabados de alta calidad',
       image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=300&auto=format&fit=crop',
       rating: 4.8,
@@ -171,8 +171,8 @@ export class Home implements OnInit {
       location: 'San Isidro • Lince, Jesús María'
     },
     {
-        name: 'Arquitectura Total',
-        title: 'Proyectos arquitectónicos completos desde el diseño',
+        name: 'Arquitectura Total "Diseño y Construcción Integral"',
+        title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=300&auto=format&fit=crop',
         rating: 4.7,
         reviews: 89,
@@ -182,8 +182,8 @@ export class Home implements OnInit {
         location: 'Miraflores • Barranco, Chorrillos'
       },
       {
-      name: 'Alev Constructores',
-      title: 'Construcción de viviendas, remodelaciones, ampliaciones',
+      name: 'Alev Constructores "Complementos para la construcción"',
+      title: 'Construcción de viviendas, remodelaciones, ampliaciones entre otros proyectos',
       image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=300&auto=format&fit=crop',
       rating: 4.9,
       reviews: 158,
@@ -193,7 +193,7 @@ export class Home implements OnInit {
       location: 'La Molina • Surco, Miraflores'
     },
     {
-      name: 'TechBuild Perú',
+      name: 'TechBuild Perú "Técnicos en Construcción Civil"',
       title: 'Especialistas en estructuras y acabados de alta calidad',
       image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=300&auto=format&fit=crop',
       rating: 4.8,
@@ -204,7 +204,7 @@ export class Home implements OnInit {
       location: 'San Isidro • Lince, Jesús María'
     },
     {
-        name: 'Arquitectura Total',
+        name: 'Arquitectura Total "Diseño y Construcción Integral"',
         title: 'Proyectos arquitectónicos completos desde el diseño',
         image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=300&auto=format&fit=crop',
         rating: 4.7,
@@ -215,8 +215,8 @@ export class Home implements OnInit {
         location: 'Miraflores • Barranco, Chorrillos'
       },
       {
-        name: 'Arquitectura Total',
-        title: 'Proyectos arquitectónicos completos desde el diseño',
+        name: 'Arquitectura Total "Diseño y Construcción Integral"',
+        title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=300&auto=format&fit=crop',
         rating: 4.7,
         reviews: 89,
@@ -226,8 +226,8 @@ export class Home implements OnInit {
         location: 'Miraflores • Barranco, Chorrillos'
       },
       {
-        name: 'Arquitectura Total',
-        title: 'Proyectos arquitectónicos completos desde el diseño',
+        name: 'Arquitectura Total "Diseño y Construcción Integral"',
+        title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=300&auto=format&fit=crop',
         rating: 4.7,
         reviews: 89,
@@ -237,8 +237,8 @@ export class Home implements OnInit {
         location: 'Miraflores • Barranco, Chorrillos'
       },
       {
-        name: 'Arquitectura Total',
-        title: 'Proyectos arquitectónicos completos desde el diseño',
+        name: 'Arquitectura Total "Diseño y Construcción Integral"',
+        title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=300&auto=format&fit=crop',
         rating: 4.7,
         reviews: 89,
@@ -248,8 +248,8 @@ export class Home implements OnInit {
         location: 'Miraflores • Barranco, Chorrillos'
       },
       {
-        name: 'Arquitectura Total',
-        title: 'Proyectos arquitectónicos completos desde el diseño',
+        name: 'Arquitectura Total "Diseño y Construcción Integral"',
+        title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=300&auto=format&fit=crop',
         rating: 4.7,
         reviews: 89,
@@ -259,8 +259,8 @@ export class Home implements OnInit {
         location: 'Miraflores • Barranco, Chorrillos'
       },
       {
-        name: 'Arquitectura Total',
-        title: 'Proyectos arquitectónicos completos desde el diseño',
+        name: 'Arquitectura Total "Diseño y Construcción Integral"',
+        title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=300&auto=format&fit=crop',
         rating: 4.7,
         reviews: 89,
@@ -270,8 +270,8 @@ export class Home implements OnInit {
         location: 'Miraflores • Barranco, Chorrillos'
       },
       {
-        name: 'Arquitectura Total',
-        title: 'Proyectos arquitectónicos completos desde el diseño',
+        name: 'Arquitectura Total "Diseño y Construcción Integral"',
+        title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=300&auto=format&fit=crop',
         rating: 4.7,
         reviews: 89,
@@ -281,8 +281,8 @@ export class Home implements OnInit {
         location: 'Miraflores • Barranco, Chorrillos'
       },
       {
-        name: 'Arquitectura Total',
-        title: 'Proyectos arquitectónicos completos desde el diseño',
+        name: 'Arquitectura Total "Diseño y Construcción Integral"',
+        title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=300&auto=format&fit=crop',
         rating: 4.7,
         reviews: 89,
@@ -292,8 +292,8 @@ export class Home implements OnInit {
         location: 'Miraflores • Barranco, Chorrillos'
       },
       {
-        name: 'Arquitectura Total',
-        title: 'Proyectos arquitectónicos completos desde el diseño',
+        name: 'Arquitectura Total "Diseño y Construcción Integral"',
+        title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=300&auto=format&fit=crop',
         rating: 4.7,
         reviews: 89,

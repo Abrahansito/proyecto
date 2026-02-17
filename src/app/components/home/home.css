@@ -50,28 +50,30 @@
 :host ::ng-deep .p-paginator .p-paginator-prev,
 :host ::ng-deep .p-paginator .p-paginator-next,
 :host ::ng-deep .p-paginator .p-paginator-last {
-    border: none;
+    border: none !important;
     background-color: transparent;
     color: #4b5563;
     min-width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 50% !important;
     margin: 0 4px;
     font-weight: 600;
-    transition: all 0.2s;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 /*Hover suave en los números no seleccionados */
-:host ::ng-deep .p-paginator .p-paginator-page:not(.p-highlight):hover {
-    background-color: #f3f4f6;
-    color: #272411;
+:host ::ng-deep .p-paginator .p-paginator-page:not(.p-highlight):not(.p-paginator-page-selected):hover {
+    background-color: #c5d2ee !important;
+    color: #272411 !important;
 }
 
 /*Estado activo*/
-:host ::ng-deep .p-paginator .p-paginator-page.p-highlight {
+:host ::ng-deep .p-paginator .p-paginator-page.p-highlight,
+:host ::ng-deep .p-paginator .p-paginator-page.p-paginator-page-selected,
+:host ::ng-deep .p-paginator .p-paginator-page[aria-current="page"] {
     background-color: #eab308 !important;
     color: white !important;
-    box-shadow: 0 2px 4px rgba(234, 179, 8, 0.4) !important;
+    box-shadow: 0 2px 5px rgba(234, 179, 8, 0.4);
 }
 
 /*Quitar el borde de foco azul feo al hacer click */
