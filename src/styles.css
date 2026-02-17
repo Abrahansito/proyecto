@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-yellow-brand {
+    background-color: #fbbf24 !important;
+    border-color: #fbbf24 !important;
+    color: #111827 !important;
+    font-weight: 700 !important;
+}

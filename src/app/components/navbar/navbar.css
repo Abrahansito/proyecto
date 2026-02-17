@@ -1,0 +1,13 @@
+/* Estilos para el componente de búsqueda en la barra de navegación */
+:host ::ng-deep .p-autocomplete-input {
+    width: 100%;
+    height: 100%;
+    padding-right: 3rem !important;
+}
+
+/* Ajuste del padding para pantallas más grandes, dejando espacio para la lupa */
+@media (min-width: 768px) {
+    :host ::ng-deep .p-autocomplete-input {
+        padding-right: 4rem !important;
+    }
+}

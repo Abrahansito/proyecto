@@ -1,0 +1,187 @@
+<app-navbar></app-navbar>
+
+<div class="bg-white min-h-screen pb-12 font-sans">
+    <div class="w-full mx-auto px-4 sm:px-6 py-6 flex flex-col lg:flex-row gap-8 items-start">
+
+<aside class="lg:w-72 lg:block shrink-0">
+
+    <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+
+        <div class="flex flex-col gap-1 mb-5">
+            <div class="flex items-center gap-3">
+                <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="verified"></p-checkbox>
+                <label for="verified" class="cursor-pointer select-none flex items-center gap-2">
+                    <div class="bg-blue-50 border border-blue-100 text-blue-600 px-2 py-0.5 rounded-md flex items-center gap-1.5">
+                        <i class="pi pi-check-circle text-sm font-bold"></i>
+                        <span class="text-sm font-bold">Verificado</span>
+                    </div>
+                    <span class="text-gray-500 text-sm font-medium">(38)</span>
+                </label>
+            </div>
+            <p class="text-xs text-gray-500 pl-9 leading-snug mt-1">Encuentra especialistas confiables.</p>
+        </div>
+
+        <hr class="border-gray-100 mb-3">
+
+        <div class="mb-6">
+            <div (click)="toggleSection('services')" class="flex items-center justify-between cursor-pointer mb-3 select-none group">
+                <h4 class="font-bold text-gray-900 text-base">Servicios</h4>
+                <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
+                   [class.rotate-180]="sections.services"></i>
+            </div>
+
+            <div [class.hidden]="!sections.services">
+                <div class="mb-4">
+                    <p-iconfield iconPosition="left" styleClass="w-full">
+                        <p-inputicon styleClass="pi pi-search text-gray-400" />
+                        <input type="text" pInputText placeholder="Buscar servicios" class="w-full text-sm h-10 pl-10 border-gray-300 rounded-md border" />
+                    </p-iconfield>
+                </div>
+                <div class="space-y-1 max-h-[300px]">
+                    <div *ngFor="let item of serviceCategories" class="flex items-center justify-between p-1.5 rounded-md hover:bg-gray-50 cursor-pointer">
+                        <div class="flex items-center gap-3 overflow-hidden">
+                            <p-checkbox [binary]="true" [(ngModel)]="item.selected"></p-checkbox>
+                            <span class="text-sm text-gray-700 truncate" [class.font-bold]="item.selected">{{ item.label }}</span>
+                        </div>
+                        <span class="text-xs text-gray-400">({{ item.count }})</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <hr class="border-gray-100 mb-5">
+
+        <div class="mb-5">
+            <div (click)="toggleSection('districts')" class="flex items-center justify-between cursor-pointer mb-3 select-none">
+                <h4 class="font-bold text-gray-900 text-base">Distritos</h4>
+                <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
+                   [class.rotate-180]="sections.districts"></i>
+            </div>
+
+            <div [class.hidden]="!sections.districts">
+                 <p-iconfield iconPosition="left" styleClass="w-full mb-3">
+                    <p-inputicon styleClass="pi pi-search text-gray-400" />
+                    <input type="text" pInputText placeholder="Buscar distritos" class="w-full text-sm h-10 pl-10 border-gray-300 rounded-md border" />
+                </p-iconfield>
+                <div class="space-y-1 text-sm text-gray-600">
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Ate</span></div><span class="text-xs text-gray-400">(289)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Barranco</span></div><span class="text-xs text-gray-400">(1854)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Breña</span></div><span class="text-xs text-gray-400">(492)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Carabayllo</span></div><span class="text-xs text-gray-400">(1693)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Cercado de Lima</span></div><span class="text-xs text-gray-400">(5154)</span></div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-gray-100 mb-5">
+
+        <div class="mb-5">
+            <div (click)="toggleSection('rating')" class="flex items-center justify-between cursor-pointer mb-3 select-none">
+                <h4 class="font-bold text-gray-900 text-base">Calificación</h4>
+                <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
+                   [class.rotate-180]="sections.rating"></i>
+            </div>
+
+            <div [class.hidden]="!sections.rating" class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <p-radioButton name="rating" value="5" [(ngModel)]="selectedRating" inputId="r5"></p-radioButton>
+                        <label for="r5" class="flex text-yellow-400 text-sm gap-0.5 cursor-pointer">
+                            <span class="text-gray-800 font-medium mr-1">5</span>
+                            <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i>
+                        </label>
+                    </div>
+                    <span class="text-xs text-gray-400">(974)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <p-radioButton name="rating" value="4" [(ngModel)]="selectedRating" inputId="r4"></p-radioButton>
+                        <label for="r4" class="flex text-yellow-400 text-sm gap-0.5 cursor-pointer">
+                            <span class="text-gray-800 font-medium mr-1">4+</span>
+                            <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star text-gray-300"></i>
+                        </label>
+                    </div>
+                    <span class="text-xs text-gray-400">(2184)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <p-radioButton name="rating" value="3" [(ngModel)]="selectedRating" inputId="r3"></p-radioButton>
+                        <label for="r3" class="flex text-yellow-400 text-sm gap-0.5 cursor-pointer">
+                            <span class="text-gray-800 font-medium mr-1">3+</span>
+                            <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star text-gray-300"></i><i class="pi pi-star text-gray-300"></i>
+                        </label>
+                    </div>
+                    <span class="text-xs text-gray-400">(5184)</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-gray-100 mb-5">
+
+        <div class="mb-5">
+            <div (click)="toggleSection('payment')" class="flex items-center justify-between cursor-pointer mb-3 select-none">
+                <h4 class="font-bold text-gray-900 text-base">Métodos de Pago</h4>
+                <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
+                   [class.rotate-180]="sections.payment"></i>
+            </div>
+            <div [class.hidden]="!sections.payment" class="space-y-2">
+                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">Efectivo</span></div><span class="text-xs text-gray-400">(289)</span></div>
+                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">Transferencia Bancaria</span></div><span class="text-xs text-gray-400">(1854)</span></div>
+                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">POS</span></div><span class="text-xs text-gray-400">(1854)</span></div>
+                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">Billeteras Digitales (Yape, Plin)</span></div><span class="text-xs text-gray-400">(492)</span></div>
+            </div>
+        </div>
+
+         <hr class="border-gray-100 mb-5">
+
+        <div>
+            <div (click)="toggleSection('languages')" class="flex items-center justify-between cursor-pointer mb-3 select-none">
+                <h4 class="font-bold text-gray-900 text-base">Idiomas</h4>
+                <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
+                   [class.rotate-180]="sections.languages"></i>
+            </div>
+            <div [class.hidden]="!sections.languages">
+                 <p-iconfield iconPosition="left" styleClass="w-full mb-3">
+                    <p-inputicon styleClass="pi pi-search text-gray-400" />
+                    <input type="text" pInputText placeholder="Buscar idiomas" class="w-full text-sm h-10 pl-10 border-gray-300 rounded-md border "/>
+                </p-iconfield>
+                  <div class="space-y-1 text-sm text-gray-600">
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Español</span></div><span class="text-xs text-gray-400">(289)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Quechua</span></div><span class="text-xs text-gray-400">(1854)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Aymara</span></div><span class="text-xs text-gray-400">(492)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Inglés</span></div><span class="text-xs text-gray-400">(1693)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Portugués</span></div><span class="text-xs text-gray-400">(5154)</span></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</aside>
+
+        <main class="flex-1 min-w-0">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+                <h2 class="text-lg font-bold text-gray-900">+{{ totalRecords }} resultados disponibles para "gasfitero"</h2>
+                </div>
+
+            <div class="flex flex-col gap-4">
+                <app-service-card
+                    *ngFor="let service of visibleServices"
+                    [data]="service">
+                </app-service-card>
+            </div>
+
+            <div class="mt-8 flex justify-center">
+                <p-paginator
+                    (onPageChange)="onPageChange($event)"
+                    [first]="first"
+                    [rows]="rows"
+                    [totalRecords]="totalRecords"
+                    [showCurrentPageReport]="false"
+                    styleClass="bg-transparent border-none">
+                </p-paginator>
+            </div>
+        </main>
+    </div>
+</div>
+
+<app-footer></app-footer>

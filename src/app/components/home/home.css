@@ -1,0 +1,105 @@
+/*Checkbox desmarcado*/
+:host ::ng-deep .p-checkbox .p-checkbox-box {
+    border: 1px solid #d1d5db;
+    border-radius: 2px;
+}
+
+/*Checkbox marcado*/
+:host ::ng-deep .p-checkbox.p-checkbox-checked .p-checkbox-box {
+    background-color: #1f2937 !important;
+    border-color: #1f2937 !important;
+}
+
+/*Icono del Checkbox (El check blanco) */
+:host ::ng-deep .p-checkbox .p-checkbox-box .p-checkbox-icon {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+
+/*Radio Button desmarcado*/
+:host ::ng-deep .p-radiobutton .p-radiobutton-box {
+    border: 2px solid #d1d5db;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+}
+
+/*Radio Button marcado*/
+:host ::ng-deep .p-radiobutton.p-radiobutton-checked .p-radiobutton-box {
+    border-color: #f8cb00 !important;
+    background-color: #f8cb00 !important;
+}
+
+/*Hover*/
+:host ::ng-deep .p-radiobutton:not(.p-radiobutton-checked):hover .p-radiobutton-box {
+    border-color: #f8cb00;
+}
+
+/*El puntito blanco del centro*/
+:host ::ng-deep .p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+    background-color: white;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+/* Estilo base de los botones*/
+:host ::ng-deep .p-paginator .p-paginator-page,
+:host ::ng-deep .p-paginator .p-paginator-first,
+:host ::ng-deep .p-paginator .p-paginator-prev,
+:host ::ng-deep .p-paginator .p-paginator-next,
+:host ::ng-deep .p-paginator .p-paginator-last {
+    border: none;
+    background-color: transparent;
+    color: #4b5563;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 4px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+/*Hover suave en los números no seleccionados */
+:host ::ng-deep .p-paginator .p-paginator-page:not(.p-highlight):hover {
+    background-color: #f3f4f6;
+    color: #272411;
+}
+
+/*Estado activo*/
+:host ::ng-deep .p-paginator .p-paginator-page.p-highlight {
+    background-color: #eab308 !important;
+    color: white !important;
+    box-shadow: 0 2px 4px rgba(234, 179, 8, 0.4) !important;
+}
+
+/*Quitar el borde de foco azul feo al hacer click */
+:host ::ng-deep .p-paginatorElement:focus {
+    box-shadow: none !important;
+}
+
+/*Ocultar los botones*/
+ :host ::ng-deep .p-paginator .p-paginator-first,
+    :host ::ng-deep .p-paginator .p-paginator-last {
+        display: none;
+    }
+
+/*Ajustes para pantallas pequeñas*/
+@media screen and (max-width: 640px) {
+
+    :host ::ng-deep .p-paginator .p-paginator-page,
+    :host ::ng-deep .p-paginator .p-paginator-prev,
+    :host ::ng-deep .p-paginator .p-paginator-next {
+        min-width: 32px;
+        height: 32px;
+        margin: 0 1px;
+        font-size: 13px;
+    }
+
+/*En móviles, mostrar solo Anterior y Siguiente*/
+    :host ::ng-deep .p-paginator .p-paginator-first,
+    :host ::ng-deep .p-paginator .p-paginator-last {
+        display: none !important;
+    }
+}
