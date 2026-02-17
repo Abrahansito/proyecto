@@ -15,6 +15,7 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { RadioButtonModule } from 'primeng/radiobutton';
 
+
 @Component({
   selector: 'app-home',
   imports: [CommonModule, FormsModule, ServiceCard, Navbar, Footer, CheckboxModule, AccordionModule, InputTextModule, SelectModule, PaginatorModule, IconFieldModule, InputIconModule, RadioButtonModule],
@@ -39,6 +40,14 @@ export class Home implements OnInit {
     payment: true,
     languages: true
   };
+
+  //Opciones de ordenamiento
+  sortOptions = [
+    { label: 'Más popular', value: 'pop' },
+    { label: 'Mejor valorado', value: 'rating' },
+    { label: 'Más reciente', value: 'new' },
+  ];
+  selectedSort: string = 'pop';
 
   constructor() {}
 

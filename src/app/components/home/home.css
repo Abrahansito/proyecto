@@ -105,3 +105,42 @@
         display: none !important;
     }
 }
+
+
+/*Quitar borde de foco y padding extra al Select de Ordenar */
+:host ::ng-deep .p-select:not(.p-disabled).p-focus {
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+
+:host ::ng-deep .p-select .p-select-label {
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+/*La flechita del select */
+:host ::ng-deep .p-select .p-select-dropdown {
+    width: 1.5rem;
+    color: #6b7280;
+}
+
+
+
+
+/*Al pasar el mouse Hover sobre una opción */
+:host ::ng-deep .p-select-option:not(.p-select-option-selected):not(.p-disabled):hover,
+:host ::ng-deep .p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus {
+    background-color: #ffefb3 !important;
+    color: #000000 !important;
+}
+
+/*Opción que ya está Seleccionada*/
+:host ::ng-deep .p-select-option.p-select-option-selected {
+    background-color: #ffd34d !important;
+    color: #000000 !important;
+}
+
+/*El pequeño check o icono si aparece */
+:host ::ng-deep .p-select-option.p-select-option-selected .p-icon {
+    color: #ffffff !important;
+}
