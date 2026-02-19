@@ -34,7 +34,7 @@
                 <div class="mb-4">
                     <p-iconfield iconPosition="left" styleClass="w-full">
                         <p-inputicon styleClass="pi pi-search text-gray-400" />
-                        <input type="text" pInputText placeholder="Buscar servicios" class="w-full text-sm h-10 pl-10 border-gray-300 rounded-md border" />
+                        <input type="text" pInputText placeholder="Buscar servicios" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400" />
                     </p-iconfield>
                 </div>
                 <div class="space-y-1 max-h-[300px]">
@@ -43,7 +43,7 @@
                             <p-checkbox [binary]="true" [(ngModel)]="item.selected"></p-checkbox>
                             <span class="text-sm text-gray-700 truncate" [class.font-bold]="item.selected">{{ item.label }}</span>
                         </div>
-                        <span class="text-xs text-gray-400">({{ item.count }})</span>
+                        <span class="text-xs text-gray-500">({{ item.count }})</span>
                     </div>
                 </div>
             </div>
@@ -61,14 +61,14 @@
             <div [class.hidden]="!sections.districts">
                  <p-iconfield iconPosition="left" styleClass="w-full mb-3">
                     <p-inputicon styleClass="pi pi-search text-gray-400" />
-                    <input type="text" pInputText placeholder="Buscar distritos" class="w-full text-sm h-10 pl-10 border-gray-300 rounded-md border" />
+                    <input type="text" pInputText placeholder="Buscar distritos" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400" />
                 </p-iconfield>
                 <div class="space-y-1 text-sm text-gray-600">
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Ate</span></div><span class="text-xs text-gray-400">(289)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Barranco</span></div><span class="text-xs text-gray-400">(1854)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Breña</span></div><span class="text-xs text-gray-400">(492)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Carabayllo</span></div><span class="text-xs text-gray-400">(1693)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Cercado de Lima</span></div><span class="text-xs text-gray-400">(5154)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Ate</span></div><span class="text-xs text-gray-500">(289)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Barranco</span></div><span class="text-xs text-gray-500">(1854)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Breña</span></div><span class="text-xs text-gray-500">(492)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Carabayllo</span></div><span class="text-xs text-gray-500">(1693)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Cercado de Lima</span></div><span class="text-xs text-gray-500">(5154)</span></div>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
                             <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i>
                         </label>
                     </div>
-                    <span class="text-xs text-gray-400">(974)</span>
+                    <span class="text-xs text-gray-500">(974)</span>
                 </div>
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
@@ -101,7 +101,7 @@
                             <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star text-gray-300"></i>
                         </label>
                     </div>
-                    <span class="text-xs text-gray-400">(2184)</span>
+                    <span class="text-xs text-gray-500">(2184)</span>
                 </div>
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
@@ -111,7 +111,7 @@
                             <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star text-gray-300"></i><i class="pi pi-star text-gray-300"></i>
                         </label>
                     </div>
-                    <span class="text-xs text-gray-400">(5184)</span>
+                    <span class="text-xs text-gray-500">(5184)</span>
                 </div>
             </div>
         </div>
@@ -125,10 +125,10 @@
                    [class.rotate-180]="sections.payment"></i>
             </div>
             <div [class.hidden]="!sections.payment" class="space-y-2">
-                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">Efectivo</span></div><span class="text-xs text-gray-400">(289)</span></div>
-                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">Transferencia Bancaria</span></div><span class="text-xs text-gray-400">(1854)</span></div>
-                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">POS</span></div><span class="text-xs text-gray-400">(1854)</span></div>
-                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">Billeteras Digitales (Yape, Plin)</span></div><span class="text-xs text-gray-400">(492)</span></div>
+                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">Efectivo</span></div><span class="text-xs text-gray-500">(289)</span></div>
+                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">Transferencia Bancaria</span></div><span class="text-xs text-gray-500">(1854)</span></div>
+                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">POS</span></div><span class="text-xs text-gray-500">(1854)</span></div>
+                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">Billeteras Digitales (Yape, Plin)</span></div><span class="text-xs text-gray-500">(492)</span></div>
             </div>
         </div>
 
@@ -143,14 +143,14 @@
             <div [class.hidden]="!sections.languages">
                  <p-iconfield iconPosition="left" styleClass="w-full mb-3">
                     <p-inputicon styleClass="pi pi-search text-gray-400" />
-                    <input type="text" pInputText placeholder="Buscar idiomas" class="w-full text-sm h-10 pl-10 border-gray-300 rounded-md border "/>
+                    <input type="text" pInputText placeholder="Buscar idiomas" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400"/>
                 </p-iconfield>
                   <div class="space-y-1 text-sm text-gray-600">
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Español</span></div><span class="text-xs text-gray-400">(289)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Quechua</span></div><span class="text-xs text-gray-400">(1854)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Aymara</span></div><span class="text-xs text-gray-400">(492)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Inglés</span></div><span class="text-xs text-gray-400">(1693)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Portugués</span></div><span class="text-xs text-gray-400">(5154)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Español</span></div><span class="text-xs text-gray-500">(289)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Quechua</span></div><span class="text-xs text-gray-500">(1854)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Aymara</span></div><span class="text-xs text-gray-500">(492)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Inglés</span></div><span class="text-xs text-gray-500">(1693)</span></div>
+                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Portugués</span></div><span class="text-xs text-gray-500">(5154)</span></div>
                 </div>
             </div>
         </div>
