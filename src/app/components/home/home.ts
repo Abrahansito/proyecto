@@ -226,10 +226,10 @@ clearFilters() {
 
   //Lista de categorías de servicios
   serviceCategories = [
-    { id: 's1', label: 'Arquitectura y Diseño', count: 245, selected: false },
+    { id: 's1', label: 'Arquitectura y Diseño de Interiores', count: 245, selected: false },
     { id: 's2', label: 'Carpintería', count: 705, selected: false },
     { id: 's3', label: 'Cerrajería', count: 492, selected: false },
-    { id: 's4', label: 'Construcción', count: 1184, selected: false },
+    { id: 's4', label: 'Construcción y Remodelaciones', count: 1184, selected: false },
     { id: 's5', label: 'Gasfitería', count: 2004, selected: false},
     { id: 's6', label: 'Pintura', count: 350, selected: false },
     { id: 's7', label: 'Electricidad', count: 890, selected: false },
@@ -270,7 +270,7 @@ clearFilters() {
   allServices = [
     {
       name: 'Alev Constructores ',
-      lema: "Complementos para la construcción",
+      lema: '"Complementos para la construcción"',
       title: 'Construcción de viviendas, remodelaciones, ampliaciones entre otros proyectos',
       image: 'imagen/imagen1_1.jpg',
       rating: 4.9,
@@ -283,7 +283,7 @@ clearFilters() {
     },
     {
       name: 'TechBuild Perú',
-      lema: "Técnicos en Construcción Civil",
+      lema: '"Técnicos en Construcción Civil"',
       title: 'Especialistas en estructuras y acabados de alta calidad',
       image: 'imagen/imagen2_2.jpg',
       rating: 4.8,
@@ -296,7 +296,7 @@ clearFilters() {
     },
     {
         name: 'Arquitectura Total ',
-        lema: "Diseño y Construcción Integral",
+        lema: '"Diseño y Construcción Integral"',
         title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'imagen/imagen3_3.jpg',
         rating: 4.7,
@@ -309,7 +309,7 @@ clearFilters() {
       },
       {
       name: 'Construye Fácil',
-      lema: "Remodelaciones Express",
+      lema: '"Remodelaciones Express"',
       title: 'Remodelaciones rápidas y eficientes para hogares y oficinas',
       image: 'imagen/imagen4_4.jpg',
       rating: 4.6,
@@ -322,7 +322,7 @@ clearFilters() {
     },
     {
       name: 'Ingeniería & Proyectos',
-      lema: "Ingenieros Civiles Especializados",
+      lema: '"Ingenieros Civiles Especializados"',
       title: 'Cálculo estructural y supervisión de obras civiles',
       image: 'imagen/imagen5_5.jpg',
       rating: 5,
@@ -335,7 +335,7 @@ clearFilters() {
     },
     {
         name: 'Acabados Premium',
-        lema: "Especialistas en Acabados",
+        lema: '"Especialistas en Acabados"',
         title: 'Trabajos de pintura, drywall y acabados finos',
         image: 'imagen/imagen6_6.jpg',
         rating: 4.5,
@@ -348,7 +348,7 @@ clearFilters() {
       },
       {
       name: 'Electricidad Segura',
-      lema: "Instalaciones Eléctricas",
+      lema: '"Instalaciones Eléctricas"',
       title: 'Instalación y mantenimiento eléctrico residencial e industrial',
       image: 'imagen/imagen7_7.jpg',
       rating: 4.8,
@@ -361,7 +361,7 @@ clearFilters() {
     },
     {
       name: 'Fontanería Moderna',
-      lema: "Servicios de Fontanería",
+      lema: '"Servicios de Fontanería"',
       title: 'Reparación e instalación de tuberías y sistemas de agua',
       image: 'imagen/imagen8_8.jpg',
       rating: 4.4,
@@ -374,7 +374,7 @@ clearFilters() {
     },
     {
       name: 'Techos & Estructuras',
-      lema: "Especialistas en Techos",
+      lema: '"Especialistas en Techos"',
       title: 'Construcción y reparación de techos de todo tipo',
       image: 'imagen/imagen9_9.jpg',
       rating: 4.7,
@@ -387,7 +387,7 @@ clearFilters() {
       },
       {
       name: 'Pisos & Porcelanatos',
-      lema: "Instalación de Pisos",
+      lema: '"Instalación de Pisos"',
       title: 'Colocación de porcelanatos, madera y pisos flotantes',
       image: 'imagen/imagen10_10.jpg',
       rating: 4.9,
@@ -400,7 +400,7 @@ clearFilters() {
     },
     {
         name: 'Carpintería Artesanal',
-        lema: "Muebles a Medida",
+        lema: '"Muebles a Medida"',
         title: 'Diseño y fabricación de muebles de madera personalizados',
         image: 'imagen/imagen11_11.jpg',
         rating: 4.8,
@@ -413,7 +413,7 @@ clearFilters() {
       },
       {
         name: 'Vidriería Express',
-        lema: "Trabajos en Vidrio",
+        lema: '"Trabajos en Vidrio"',
         title: 'Cortado, instalación y reparación de vidrios y espejos',
         image: 'imagen/imagen12_12.jpg',
         rating: 4.6,
@@ -426,7 +426,7 @@ clearFilters() {
       },
       {
         name: 'Climatización Total',
-        lema: "Instalación de Aire Acondicionado",
+        lema: '"Instalación de Aire Acondicionado"',
         title: 'Venta e instalación de sistemas de climatización',
         image: 'imagen/imagen13_13.jpg',
         rating: 4.7,
@@ -439,7 +439,7 @@ clearFilters() {
       },
       {
         name: 'Albañilería Profesional',
-        lema: "Trabajos de Albañilería",
+        lema: '"Trabajos de Albañilería"',
         title: 'Construcción de muros, tabiques y obras de albañilería',
         image: 'imagen/imagen14_14.jpg',
         rating: 4.5,
@@ -452,7 +452,7 @@ clearFilters() {
       },
       {
         name: 'Jardinería & Paisajismo',
-        lema: "Diseño de Jardines",
+        lema: '"Diseño de Jardines"',
         title: 'Diseño, instalación y mantenimiento de áreas verdes',
         image: 'imagen/imagen15_15.jpg',
         rating: 4.9,
@@ -465,7 +465,7 @@ clearFilters() {
       },
       {
         name: 'Gasfitería Integral',
-        lema: "Servicios de Gasfitería",
+        lema: '"Servicios de Gasfitería"',
         title: 'Instalación y reparación de sistemas de gas y agua',
         image: 'imagen/imagen16_16.jpg',
         rating: 4.6,
@@ -478,7 +478,7 @@ clearFilters() {
       },
       {
         name: 'Cerrajería Segura',
-        lema: "Cerrajería Profesional",
+        lema: '"Cerrajería Profesional"',
         title: 'Instalación y reparación de cerraduras y sistemas de seguridad',
         image: 'imagen/imagen17_17.jpg',
         rating: 4.8,
@@ -491,7 +491,7 @@ clearFilters() {
       },
       {
         name: 'Pintura Decorativa',
-        lema: "Pintura de Interiores y Exteriores",
+        lema: '"Pintura de Interiores y Exteriores"',
         title: 'Trabajos de pintura con técnicas decorativas modernas',
         image: 'imagen/imagen18_18.jpg',
         rating: 4.7,
@@ -504,7 +504,7 @@ clearFilters() {
       },
       {
         name: 'Drywall Expert',
-        lema: "Instalación de Drywall",
+        lema: '"Instalación de Drywall"',
         title: 'Trabajos en drywall, cielos rasos y tabiquería',
         image: 'imagen/imagen19_19.jpg',
         rating: 4.5,
@@ -517,7 +517,7 @@ clearFilters() {
       },
       {
       name: 'Impermeabilización Total',
-      lema: "Impermeabilización de Techos",
+      lema: '"Impermeabilización de Techos"',
       title: 'Sistemas de impermeabilización para techos y terrazas',
       image: 'imagen/imagen20_20.jpg',
       rating: 4.9,
