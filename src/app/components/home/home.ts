@@ -51,7 +51,7 @@ export class Home implements OnInit {
       );
   }
 
-  
+
 
   //checked: any = null;//Variable para almacenar el valor del filtro de verificado (checkbox)
   selectedRating: any = null;//Variable para almacenar el valor del filtro de calificación
@@ -115,7 +115,7 @@ applyFilters() {
 
       //Añadir label de estrellas si hay alguna seleccionada
       if (this.selectedRating) {
-          this.activeFilters.push({ label: `${this.selectedRating} o más estrellas`, type: 'rating' });
+          this.activeFilters.push({ label: `${this.selectedRating} estrellas`, type: 'rating' });
       }
 
       //Filtrar la lista completa de servicios según los filtros seleccionados
@@ -129,12 +129,12 @@ applyFilters() {
           // Si hay algo marcado, verificamos que el servicio coincida.
           const matchService = selServices.length === 0 || selServices.includes(service.title.split(' ')[0]); //Asumo el titulo del servicio
           const matchDistrict = selDistricts.length === 0 || selDistricts.includes(service.location.split(' • ')[0]); //Asumo el distrito del servicio
-          //const matchPayment = selPayments.length === 0 || selPayments.includes(service);
-          const matchLanguage = selLanguages.length === 0 || selLanguages.includes(service.languages); //Asumo el primer idioma del servicio
+          const matchPayment = selPayments.length === 0 || selPayments.includes(service.payment); //Asumo el método de pago del servicio
+          const matchLanguage = selLanguages.length === 0 || selLanguages.includes(service.languages); //Asumo los idiomas del servicio
 
           const matchVerified = !this.onlyVerified || service.verified === true;
 
-          return matchService && matchDistrict && matchLanguage && matchVerified && (!this.selectedRating || service.rating >= this.selectedRating);
+          return matchService && matchDistrict && matchPayment && matchLanguage && matchVerified && (!this.selectedRating || service.rating >= this.selectedRating);
       });
 
       this.totalRecords = this.visibleServices.length;
@@ -161,7 +161,7 @@ removeIndividualFilter(filterToRemove: any) {
           this.onlyVerified = false; // Limpiar checkbox
       }
 
-      this.applyFilters(); // Recalcular todo
+      this.applyFilters(); //Recalcular todo
   }
 
 //Función para limpiar todos los filtros de una vez
@@ -251,7 +251,8 @@ clearFilters() {
       verified: false,
       hours: '2 horas',
       languages: 'Español • Inglés',
-      location: 'La Molina • La Molina, Surco, Miraflores'
+      location: 'La Molina • La Molina, Surco, Miraflores',
+      payment: 'Efectivo'
     },
     {
       name: 'TechBuild Perú "Técnicos en Construcción Civil"',
@@ -262,7 +263,8 @@ clearFilters() {
       verified: true,
       hours: '1 hora',
       languages: 'Español • Quechua',
-      location: 'San Isidro • San Isidro, Lince, Jesús María'
+      location: 'San Isidro • San Isidro, Lince, Jesús María',
+      payment: 'Efectivo'
     },
     {
         name: 'Arquitectura Total "Diseño y Construcción Integral"',
@@ -273,7 +275,8 @@ clearFilters() {
         verified: true,
         hours: '4 horas',
         languages: 'Español • Inglés • Francés',
-        location: 'Miraflores • Miraflores, Barranco, Chorrillos'
+        location: 'Miraflores • Miraflores, Barranco, Chorrillos',
+        payment: 'Efectivo'
       },
       {
       name: 'Construye Fácil "Remodelaciones Express"',
@@ -284,7 +287,8 @@ clearFilters() {
       verified: true,
       hours: '3 horas',
       languages: 'Español',
-      location: 'Surco • Surco, San Borja, Santiago de Surco'
+      location: 'Surco • Surco, San Borja, Santiago de Surco',
+      payment: 'Efectivo'
     },
     {
       name: 'Ingeniería & Proyectos "Ingenieros Civiles Especializados"',
@@ -295,7 +299,8 @@ clearFilters() {
       verified: true,
       hours: '24 horas',
       languages: 'Español • Inglés • Alemán',
-      location: 'Lima Centro • Cercado de Lima, Breña, Pueblo Libre'
+      location: 'Lima Centro • Cercado de Lima, Breña, Pueblo Libre',
+      payment: 'Transferencia Bancaria'
     },
     {
         name: 'Acabados Premium "Especialistas en Acabados"',
@@ -306,7 +311,8 @@ clearFilters() {
         verified: true,
         hours: '2 horas',
         languages: 'Español',
-        location: 'San Miguel • San Miguel, Magdalena, Pueblo Libre'
+        location: 'San Miguel • San Miguel, Magdalena, Pueblo Libre',
+        payment: 'Efectivo'
       },
       {
       name: 'Electricidad Segura "Instalaciones Eléctricas"',
@@ -317,7 +323,8 @@ clearFilters() {
       verified: true,
       hours: '1 hora',
       languages: 'Español',
-      location: 'Callao • Callao, Ventanilla, Bellavista'
+      location: 'Callao • Callao, Ventanilla, Bellavista',
+      payment: 'Efectivo'
     },
     {
       name: 'Fontanería Moderna "Servicios de Fontanería"',
@@ -328,7 +335,8 @@ clearFilters() {
       verified: true,
       hours: '3 horas',
       languages: 'Español',
-      location: 'Comas • Comas, Los Olivos, Independencia'
+      location: 'Comas • Comas, Los Olivos, Independencia',
+      payment: 'Efectivo'
     },
     {
         name: 'Techos & Estructuras "Especialistas en Techos"',
@@ -339,7 +347,8 @@ clearFilters() {
         verified: true,
         hours: '6 horas',
         languages: 'Español',
-        location: 'Villa El Salvador • Villa El Salvador, Villa María, San Juan de Miraflores'
+        location: 'Villa El Salvador • Villa El Salvador, Villa María, San Juan de Miraflores',
+        payment: 'Efectivo'
       },
       {
       name: 'Pisos & Porcelanatos "Instalación de Pisos"',
@@ -350,7 +359,8 @@ clearFilters() {
       verified: true,
       hours: '2 horas',
       languages: 'Español',
-      location: 'Barranco • Barranco, Chorrillos, Surco'
+      location: 'Barranco • Barranco, Chorrillos, Surco',
+      payment: 'Efectivo'
     },
     {
         name: 'Carpintería Artesanal "Muebles a Medida"',
@@ -361,7 +371,8 @@ clearFilters() {
         verified: true,
         hours: '48 horas',
         languages: 'Español • Inglés',
-        location: 'San Borja • San Borja, Surco, La Molina'
+        location: 'San Borja • San Borja, Surco, La Molina',
+        payment: 'Efectivo'
       },
       {
         name: 'Vidriería Express "Trabajos en Vidrio"',
@@ -372,7 +383,8 @@ clearFilters() {
         verified: true,
         hours: '4 horas',
         languages: 'Español',
-        location: 'Jesús María • Jesús María, Lince, San Isidro'
+        location: 'Jesús María • Jesús María, Lince, San Isidro',
+        payment: 'Efectivo'
       },
       {
         name: 'Climatización Total "Instalación de Aire Acondicionado"',
@@ -383,7 +395,8 @@ clearFilters() {
         verified: true,
         hours: '24 horas',
         languages: 'Español',
-        location: 'San Isidro • San Isidro, Miraflores, Surco'
+        location: 'San Isidro • San Isidro, Miraflores, Surco',
+        payment: 'Efectivo'
       },
       {
         name: 'Albañilería Profesional "Trabajos de Albañilería"',
@@ -394,7 +407,8 @@ clearFilters() {
         verified: true,
         hours: '1 día',
         languages: 'Español',
-        location: 'Los Olivos • Los Olivos, Comas, Independencia'
+        location: 'Los Olivos • Los Olivos, Comas, Independencia',
+        payment: 'Efectivo'
       },
       {
         name: 'Jardinería & Paisajismo "Diseño de Jardines"',
@@ -405,7 +419,8 @@ clearFilters() {
         verified: true,
         hours: '3 días',
         languages: 'Español',
-        location: 'La Molina • La Molina, Ate, Surco'
+        location: 'La Molina • La Molina, Ate, Surco',
+        payment: 'Efectivo'
       },
       {
         name: 'Gasfitería Integral "Servicios de Gasfitería"',
@@ -416,7 +431,8 @@ clearFilters() {
         verified: true,
         hours: '2 horas',
         languages: 'Español',
-        location: 'Magdalena • Magdalena, San Miguel, Pueblo Libre'
+        location: 'Magdalena • Magdalena, San Miguel, Pueblo Libre',
+        payment: 'Efectivo'
       },
       {
         name: 'Cerrajería Segura "Cerrajería Profesional"',
@@ -427,7 +443,8 @@ clearFilters() {
         verified: true,
         hours: '1 hora',
         languages: 'Español',
-        location: 'Surquillo • Surquillo, San Borja, Miraflores'
+        location: 'Surquillo • Surquillo, San Borja, Miraflores',
+        payment: 'Efectivo'
       },
       {
         name: 'Pintura Decorativa "Pintura de Interiores y Exteriores"',
@@ -438,7 +455,8 @@ clearFilters() {
         verified: true,
         hours: '2 días',
         languages: 'Español • Inglés',
-        location: 'Miraflores • Miraflores, Barranco, Chorrillos'
+        location: 'Miraflores • Miraflores, Barranco, Chorrillos',
+        payment: 'Efectivo'
       },
       {
         name: 'Drywall Expert "Instalación de Drywall"',
@@ -449,7 +467,8 @@ clearFilters() {
         verified: true,
         hours: '3 horas',
         languages: 'Español',
-        location: 'San Luis • San Luis, La Victoria, Santa Anita'
+        location: 'San Luis • San Luis, La Victoria, Santa Anita',
+        payment: 'Efectivo'
       },
       {
       name: 'Impermeabilización Total "Impermeabilización de Techos"',
@@ -460,7 +479,8 @@ clearFilters() {
       verified: true,
       hours: '1 día',
       languages: 'Español',
-      location: 'Chorrillos • Chorrillos, Barranco, Surco'
+      location: 'Chorrillos • Chorrillos, Barranco, Surco',
+      payment: 'Efectivo'
     },
   ];
 }
