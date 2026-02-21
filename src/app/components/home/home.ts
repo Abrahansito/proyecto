@@ -14,18 +14,56 @@ import { PaginatorModule } from 'primeng/paginator'
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { RadioButtonModule } from 'primeng/radiobutton';
-
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule, ServiceCard, Navbar, Footer, CheckboxModule, AccordionModule, InputTextModule, SelectModule, PaginatorModule, IconFieldModule, InputIconModule, RadioButtonModule],
+  imports: [CommonModule, FormsModule, ServiceCard, Navbar, Footer, CheckboxModule, AccordionModule, InputTextModule, SelectModule, PaginatorModule, IconFieldModule, InputIconModule, RadioButtonModule, ButtonModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
+  searchServiceText: string = '';
+  searchDistrictText: string = '';
+  searchLenguageText: string = '';
 
-  checked: any = null;
-  selectedRating: any = null;
+  //Getter para filtrar Servicios en tiempo real
+  get filteredServices() {
+      if (!this.searchServiceText) return this.serviceCategories;
+      return this.serviceCategories.filter(item =>
+          item.label.toLowerCase().includes(this.searchServiceText.toLowerCase())
+      );
+  }
+
+  //Getter para filtrar Distritos en tiempo real
+  get filteredDistricts() {
+      if (!this.searchDistrictText) return this.districtCategories;
+      return this.districtCategories.filter(item =>
+          item.label.toLowerCase().includes(this.searchDistrictText.toLowerCase())
+      );
+  }
+
+  //Getter para filtrar Idiomas en tiempo real
+  get filteredLanguages() {
+      if (!this.searchLenguageText) return this.languageCategories;
+      return this.languageCategories.filter(item =>
+          item.label.toLowerCase().includes(this.searchLenguageText.toLowerCase())
+      );
+  }
+
+  
+
+  //checked: any = null;//Variable para almacenar el valor del filtro de verificado (checkbox)
+  selectedRating: any = null;//Variable para almacenar el valor del filtro de calificación
+
+  activeFilters: any[] = [];//Lista para almacenar los filtros activos visualmente
+
+  //Variables para mostrar u ocultar secciones del filtro
+  showAllServices: boolean = false;//Variable para mostrar u ocultar la sección de servicios
+  showAllDistricts: boolean = false;//Variable para mostrar u ocultar la sección de distritos
+
+  //Variable para el filtro de Verificado
+  onlyVerified: boolean = false;
 
   //Variables para paginación
   visibleServices: any[] = []; //Esta es la lista que se ve en pantalla
@@ -33,6 +71,7 @@ export class Home implements OnInit {
   rows: number = 5;            //Cantidad de elementos por página
   totalRecords: number = 0;    //Total de elementos
 
+  //Objeto para controlar la visibilidad de las secciones del filtro
   sections = {
     services: true,
     districts: true,
@@ -47,15 +86,97 @@ export class Home implements OnInit {
     { label: 'Mejor valorado', value: 'rating' },
     { label: 'Más reciente', value: 'new' },
   ];
-  selectedSort: string = 'pop';
+  selectedSort: string = 'pop';//Valor por defecto para el ordenamiento
 
-  constructor() {}
+  constructor() {}//El constructor se mantiene vacío, ya que no necesitamos inicializar nada al crear la instancia del componente
 
   //Calculamos el total y mostramos la primera página
   ngOnInit() {
-    this.totalRecords = this.allServices.length;
-    this.updatePage();
+    this.totalRecords = this.allServices.length;//Calculamos el total de servicios disponibles
+    this.updatePage();//Mostramos la primera página de servicios al cargar el componente
   }
+
+
+//Función para aplicar los filtros seleccionados
+applyFilters() {
+      //Actualizar la lista de filtros activos para mostrar las etiquetas correspondientes
+      this.activeFilters = [];
+
+      //Agregar filtro de verificado si está seleccionado
+      if (this.onlyVerified) {
+        this.activeFilters.push({ label: 'Solo Verificados', type: 'verified' });
+    }
+
+      //Añadir labels de checkboxes marcados
+      this.serviceCategories.forEach(c => { if(c.selected) this.activeFilters.push({...c, type: 'service'}); });
+      this.districtCategories.forEach(c => { if(c.selected) this.activeFilters.push({...c, type: 'district'}); });
+      this.paymentCategories.forEach(c => { if(c.selected) this.activeFilters.push({...c, type: 'payment'}); });
+      this.languageCategories.forEach(c => { if(c.selected) this.activeFilters.push({...c, type: 'language'}); });
+
+      //Añadir label de estrellas si hay alguna seleccionada
+      if (this.selectedRating) {
+          this.activeFilters.push({ label: `${this.selectedRating} o más estrellas`, type: 'rating' });
+      }
+
+      //Filtrar la lista completa de servicios según los filtros seleccionados
+      const selServices = this.serviceCategories.filter(c => c.selected).map(c => c.label);
+      const selDistricts = this.districtCategories.filter(c => c.selected).map(c => c.label);
+      const selPayments = this.paymentCategories.filter(c => c.selected).map(c => c.label);
+      const selLanguages = this.languageCategories.filter(c => c.selected).map(c => c.label);
+
+      this.visibleServices = this.allServices.filter(service => {
+          // Si no hay nada marcado en la categoría (length === 0), dejamos pasar todos.
+          // Si hay algo marcado, verificamos que el servicio coincida.
+          const matchService = selServices.length === 0 || selServices.includes(service.title.split(' ')[0]); //Asumo el titulo del servicio
+          const matchDistrict = selDistricts.length === 0 || selDistricts.includes(service.location.split(' • ')[0]); //Asumo el distrito del servicio
+          //const matchPayment = selPayments.length === 0 || selPayments.includes(service);
+          const matchLanguage = selLanguages.length === 0 || selLanguages.includes(service.languages); //Asumo el primer idioma del servicio
+
+          const matchVerified = !this.onlyVerified || service.verified === true;
+
+          return matchService && matchDistrict && matchLanguage && matchVerified && (!this.selectedRating || service.rating >= this.selectedRating);
+      });
+
+      this.totalRecords = this.visibleServices.length;
+      this.first = 0; // Regresar a página 1
+  }
+
+//Función para eliminar un filtro individualmente al hacer clic en la "X" de la etiqueta
+removeIndividualFilter(filterToRemove: any) {
+      if (filterToRemove.type === 'service') {
+          const found = this.serviceCategories.find(c => c.label === filterToRemove.label);
+          if (found) found.selected = false;
+      } else if (filterToRemove.type === 'district') {
+          const found = this.districtCategories.find(c => c.label === filterToRemove.label);
+          if (found) found.selected = false;
+      } else if (filterToRemove.type === 'payment') {
+          const found = this.paymentCategories.find(c => c.label === filterToRemove.label);
+          if (found) found.selected = false;
+      } else if (filterToRemove.type === 'language') {
+          const found = this.languageCategories.find(c => c.label === filterToRemove.label);
+          if (found) found.selected = false;
+      } else if (filterToRemove.type === 'rating') {
+          this.selectedRating = null; // Limpiar radio button
+      } else if(filterToRemove.type === 'verified') {
+          this.onlyVerified = false; // Limpiar checkbox
+      }
+
+      this.applyFilters(); // Recalcular todo
+  }
+
+//Función para limpiar todos los filtros de una vez
+clearFilters() {
+      this.serviceCategories.forEach(c => c.selected = false);
+      this.districtCategories.forEach(c => c.selected = false);
+      this.paymentCategories.forEach(c => c.selected = false);
+      this.languageCategories.forEach(c => c.selected = false);
+      this.selectedRating = null;
+      this.onlyVerified = false;
+      this.applyFilters();
+  }
+
+
+
 
   //Función que se ejecuta al cambiar de página
   onPageChange(event: any) {
@@ -77,6 +198,7 @@ export class Home implements OnInit {
     this.sections[sectionName] = !this.sections[sectionName];
   }
 
+  //Lista de categorías de servicios
   serviceCategories = [
     { id: 's1', label: 'Arquitectura y Diseño', count: 245, selected: false },
     { id: 's2', label: 'Carpintería', count: 705, selected: false },
@@ -90,6 +212,35 @@ export class Home implements OnInit {
     { id: 's10', label: 'Transporte', count: 320, selected: false },
   ];
 
+  //Lista de Distritos
+  districtCategories = [
+      { label: 'Ate', count: 289, selected: false, type: 'district' },
+      { label: 'Barranco', count: 1854, selected: false, type: 'district' },
+      { label: 'Breña', count: 492, selected: false, type: 'district' },
+      { label: 'Carabayllo', count: 1693, selected: false, type: 'district' },
+      { label: 'Cercado de Lima', count: 5154, selected: false, type: 'district' }
+  ];
+
+  //Lista de Métodos de Pago
+  paymentCategories = [
+      { label: 'Efectivo', count: 289, selected: false, type: 'payment' },
+      { label: 'Transferencia Bancaria', count: 1854, selected: false, type: 'payment' },
+      { label: 'POS', count: 1854, selected: false, type: 'payment' },
+      { label: 'Billeteras Digitales (Yape, Plin)', count: 492, selected: false, type: 'payment' }
+  ];
+
+  //Lista de Idiomas
+  languageCategories = [
+      { label: 'Español', count: 289, selected: false, type: 'language' },
+      { label: 'Quechua', count: 1854, selected: false, type: 'language' },
+      { label: 'Aymara', count: 492, selected: false, type: 'language' },
+      { label: 'Inglés', count: 1693, selected: false, type: 'language' },
+      { label: 'Portugués', count: 5154, selected: false, type: 'language' }
+  ];
+
+
+
+  //Lista de servicios disponibles
   allServices = [
     {
       name: 'Alev Constructores "Complementos para la construcción"',
@@ -97,7 +248,7 @@ export class Home implements OnInit {
       image: 'imagen/imagen1_1.jpg',
       rating: 4.9,
       reviews: 158,
-      verified: true,
+      verified: false,
       hours: '2 horas',
       languages: 'Español • Inglés',
       location: 'La Molina • La Molina, Surco, Miraflores'

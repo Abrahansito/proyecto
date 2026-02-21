@@ -1,29 +1,28 @@
 <app-navbar></app-navbar>
 
 <div class="bg-white min-h-screen pb-12 font-sans">
-    <div class="w-full mx-auto px-4 sm:px-4 py-4 flex flex-col md:flex-row gap-5 items-start">
+  <div class="w-full mx-auto px-4 sm:px-4 py-4 flex flex-col md:flex-row gap-5 items-start">
 
-<aside class="w-full md:w-4 shrink-0">
-
-    <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+    <aside class="w-full md:w-3 shrink-0">
+      <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
 
         <div class="flex flex-col gap-1 mb-5">
-            <div class="flex items-center gap-3">
-                <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="verified"></p-checkbox>
-                <label for="verified" class="cursor-pointer select-none flex items-center gap-2">
-                    <div class="bg-blue-50 border border-blue-100 text-blue-600 px-2 py-0.5 rounded-md flex items-center gap-1.5">
-                        <i class="pi pi-check-circle text-sm font-bold"></i>
-                        <span class="text-sm font-bold">Verificado</span>
-                    </div>
-                    <span class="text-gray-500 text-sm font-medium">(38)</span>
-                </label>
-            </div>
-            <p class="text-xs text-gray-500 pl-9 leading-snug mt-1">Encuentra especialistas confiables.</p>
+          <div class="flex items-center gap-3">
+            <p-checkbox [(ngModel)]="onlyVerified" [binary]="true" inputId="verifiedCheck" (onChange)="applyFilters()"></p-checkbox>
+            <label for="verifiedCheck" class="cursor-pointer select-none flex items-center gap-2">
+              <div class="bg-blue-50 border border-blue-100 text-blue-600 px-2 py-0.5 rounded-md flex items-center gap-1.5">
+                <i class="pi pi-check-circle text-sm font-bold"></i>
+                <span class="text-sm font-bold">Verificado</span>
+              </div>
+              <span class="text-gray-500 text-sm font-medium">(38)</span>
+            </label>
+          </div>
+          <p class="text-xs text-gray-500 pl-9 leading-snug mt-1">Encuentra especialistas confiables y verificados.</p>
         </div>
 
-        <hr class="border-gray-100 mb-3">
+        <hr class="border-gray-300 mb-3">
 
-        <div class="mb-6">
+        <div class="mb-4">
             <div (click)="toggleSection('services')" class="flex items-center justify-between cursor-pointer mb-3 select-none group">
                 <h4 class="font-bold text-gray-900 text-base">Servicios</h4>
                 <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
@@ -34,24 +33,32 @@
                 <div class="mb-4">
                     <p-iconfield iconPosition="left" styleClass="w-full">
                         <p-inputicon styleClass="pi pi-search text-gray-400" />
-                        <input type="text" pInputText placeholder="Buscar servicios" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400" />
+                        <input type="text" pInputText placeholder="Buscar servicios" [(ngModel)]="searchServiceText" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400" />
                     </p-iconfield>
                 </div>
-                <div class="space-y-1 max-h-[300px]">
-                    <div *ngFor="let item of serviceCategories" class="flex items-center justify-between p-1.5 rounded-md hover:bg-gray-50 cursor-pointer">
+                <div class="space-y-1 mt-3">
+                    <div *ngFor="let item of filteredServices | slice:0:(showAllServices ? filteredServices.length : 5)" class="flex items-center justify-between p-1.5 rounded-md hover:bg-gray-50 cursor-pointer">
                         <div class="flex items-center gap-3 overflow-hidden">
-                            <p-checkbox [binary]="true" [(ngModel)]="item.selected"></p-checkbox>
+                            <p-checkbox [binary]="true" [(ngModel)]="item.selected" (onChange)="applyFilters()"></p-checkbox>
                             <span class="text-sm text-gray-700 truncate" [class.font-bold]="item.selected">{{ item.label }}</span>
                         </div>
                         <span class="text-xs text-gray-500">({{ item.count }})</span>
                     </div>
                 </div>
+
+                <div *ngIf="serviceCategories.length > 5" class="mt-4 flex justify-center">
+                    <button (click)="showAllServices = !showAllServices"
+                            class="bg-transparent border-none text-sm font-medium text-gray-800 hover:text-black transition-colors flex items-center gap-1 cursor-pointer">
+                            {{ showAllServices ? 'Ver menos' : 'Ver más' }}
+                            <i class="pi text-xs" [ngClass]="showAllServices ? 'pi-minus' : 'pi-plus'"></i>
+                    </button>
+                </div>
             </div>
         </div>
-        <br>
-        <hr class="border-gray-100 mb-5">
 
-        <div class="mb-5">
+        <hr class="border-gray-300 mb-5">
+
+        <div class="mb-4">
             <div (click)="toggleSection('districts')" class="flex items-center justify-between cursor-pointer mb-3 select-none">
                 <h4 class="font-bold text-gray-900 text-base">Distritos</h4>
                 <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
@@ -61,21 +68,23 @@
             <div [class.hidden]="!sections.districts">
                  <p-iconfield iconPosition="left" styleClass="w-full mb-3">
                     <p-inputicon styleClass="pi pi-search text-gray-400" />
-                    <input type="text" pInputText placeholder="Buscar distritos" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400" />
+                    <input type="text" pInputText placeholder="Buscar distritos" [(ngModel)]="searchDistrictText" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400" />
                 </p-iconfield>
                 <div class="space-y-1 text-sm text-gray-600">
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Ate</span></div><span class="text-xs text-gray-500">(289)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Barranco</span></div><span class="text-xs text-gray-500">(1854)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Breña</span></div><span class="text-xs text-gray-500">(492)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Carabayllo</span></div><span class="text-xs text-gray-500">(1693)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Cercado de Lima</span></div><span class="text-xs text-gray-500">(5154)</span></div>
+                  <div *ngFor="let item of filteredDistricts" class="flex justify-between p-1 hover:bg-gray-50 cursor-pointer">
+                    <div class="flex items-center gap-2 overflow-hidden">
+                      <p-checkbox [binary]="true" [(ngModel)]="item.selected" (onChange)="applyFilters()"></p-checkbox>
+                      <span class="truncate" [class.font-bold]="item.selected">{{ item.label }}</span>
+                    </div>
+                    <span class="text-xs text-gray-400 shrink-0">({{ item.count }})</span>
+                  </div>
                 </div>
             </div>
         </div>
 
-        <hr class="border-gray-100 mb-5">
+        <hr class="border-gray-300 mb-5">
 
-        <div class="mb-5">
+        <div class="mb-4">
             <div (click)="toggleSection('rating')" class="flex items-center justify-between cursor-pointer mb-3 select-none">
                 <h4 class="font-bold text-gray-900 text-base">Calificación</h4>
                 <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
@@ -85,7 +94,7 @@
             <div [class.hidden]="!sections.rating" class="space-y-3">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                        <p-radioButton name="rating" value="5" [(ngModel)]="selectedRating" inputId="r5"></p-radioButton>
+                        <p-radioButton name="rating" value="5" [(ngModel)]="selectedRating" inputId="r5" (onClick)="applyFilters()"></p-radioButton>
                         <label for="r5" class="flex text-yellow-400 text-sm gap-0.5 cursor-pointer">
                             <span class="text-gray-800 font-medium mr-1">5</span>
                             <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i>
@@ -95,7 +104,7 @@
                 </div>
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                        <p-radioButton name="rating" value="4" [(ngModel)]="selectedRating" inputId="r4"></p-radioButton>
+                        <p-radioButton name="rating" value="4" [(ngModel)]="selectedRating" inputId="r4" (onClick)="applyFilters()"></p-radioButton>
                         <label for="r4" class="flex text-yellow-400 text-sm gap-0.5 cursor-pointer">
                             <span class="text-gray-800 font-medium mr-1">4+</span>
                             <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star text-gray-300"></i>
@@ -105,7 +114,7 @@
                 </div>
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                        <p-radioButton name="rating" value="3" [(ngModel)]="selectedRating" inputId="r3"></p-radioButton>
+                        <p-radioButton name="rating" value="3" [(ngModel)]="selectedRating" inputId="r3" (onClick)="applyFilters()"></p-radioButton>
                         <label for="r3" class="flex text-yellow-400 text-sm gap-0.5 cursor-pointer">
                             <span class="text-gray-800 font-medium mr-1">3+</span>
                             <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star text-gray-300"></i><i class="pi pi-star text-gray-300"></i>
@@ -116,23 +125,27 @@
             </div>
         </div>
 
-        <hr class="border-gray-100 mb-5">
+        <hr class="border-gray-300 mb-5">
 
-        <div class="mb-5">
+        <div class="mb-4">
             <div (click)="toggleSection('payment')" class="flex items-center justify-between cursor-pointer mb-3 select-none">
                 <h4 class="font-bold text-gray-900 text-base">Métodos de Pago</h4>
                 <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
                    [class.rotate-180]="sections.payment"></i>
             </div>
-            <div [class.hidden]="!sections.payment" class="space-y-2">
-                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">Efectivo</span></div><span class="text-xs text-gray-500">(289)</span></div>
-                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">Transferencia Bancaria</span></div><span class="text-xs text-gray-500">(1854)</span></div>
-                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">POS</span></div><span class="text-xs text-gray-500">(1854)</span></div>
-                 <div class="flex justify-between p-1"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span class="text-sm">Billeteras Digitales (Yape, Plin)</span></div><span class="text-xs text-gray-500">(492)</span></div>
+            <div [class.hidden]="!sections.payment" class="space-y-2 text-sm text-gray-600">
+              <div *ngFor="let item of paymentCategories" class="flex justify-between p-1 hover:bg-gray-50 cursor-pointer">
+                <div class="flex items-center gap-2 overflow-hidden">
+                  <p-checkbox [binary]="true" [(ngModel)]="item.selected" (onChange)="applyFilters()"></p-checkbox>
+                  <span class="truncate" [class.font-bold]="item.selected">{{ item.label }}</span>
+                </div>
+                <span class="text-xs text-gray-400 shrink-0">({{ item.count }})</span>
+              </div>
             </div>
-        </div>
 
-         <hr class="border-gray-100 mb-5">
+          </div>
+
+         <hr class="border-gray-300 mb-5">
 
         <div>
             <div (click)="toggleSection('languages')" class="flex items-center justify-between cursor-pointer mb-3 select-none">
@@ -143,20 +156,23 @@
             <div [class.hidden]="!sections.languages">
                  <p-iconfield iconPosition="left" styleClass="w-full mb-3">
                     <p-inputicon styleClass="pi pi-search text-gray-400" />
-                    <input type="text" pInputText placeholder="Buscar idiomas" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400"/>
+                    <input type="text" pInputText placeholder="Buscar idiomas" [(ngModel)]="searchLenguageText" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400"/>
                 </p-iconfield>
                   <div class="space-y-1 text-sm text-gray-600">
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Español</span></div><span class="text-xs text-gray-500">(289)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Quechua</span></div><span class="text-xs text-gray-500">(1854)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Aymara</span></div><span class="text-xs text-gray-500">(492)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Inglés</span></div><span class="text-xs text-gray-500">(1693)</span></div>
-                    <div class="flex justify-between p-1 hover:bg-gray-50"><div class="flex gap-2"><p-checkbox [binary]="true"></p-checkbox><span>Portugués</span></div><span class="text-xs text-gray-500">(5154)</span></div>
+                    <div *ngFor="let item of filteredLanguages" class="flex justify-between p-1 hover:bg-gray-50 cursor-pointer">
+                      <div class="flex items-center gap-2 overflow-hidden">
+                        <p-checkbox [binary]="true" [(ngModel)]="item.selected" (onChange)="applyFilters()"></p-checkbox>
+                        <span class="truncate" [class.font-bold]="item.selected">{{ item.label }}</span>
+                      </div>
+                      <span class="text-xs text-gray-400 shrink-0">({{ item.count }})</span>
+                    </div>
+
                 </div>
             </div>
         </div>
 
-    </div>
-</aside>
+      </div>
+    </aside>
 
         <main class="flex-1 min-w-0 w-full"><br>
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
@@ -191,12 +207,28 @@
             </div>
           </div>
 
-            <div class="flex flex-col gap-4">
-                <app-service-card
-                    *ngFor="let service of visibleServices"
-                    [data]="service">
-                </app-service-card>
-            </div>
+          <div *ngIf="activeFilters.length > 0" class="flex flex-wrap items-center gap-2 mb-4 pt-2">
+            <div *ngFor="let filter of activeFilters"
+            class="inline-flex items-center gap-1.5 bg-yellow-100 border-yellow-200 text-gray-900 text-sm font-medium px-3 py-1 rounded-full transition-colors hover:bg-yellow-200">
+            <span>{{ filter.label }}</span>
+            <i class="pi pi-times text-[10px] text-yellow-600 hover:text-yellow-900 cursor-pointer p-0.5" (click)="removeIndividualFilter(filter)"></i>
+          </div>
+
+          <button *ngIf="activeFilters.length >= 1"
+            (click)="clearFilters()"
+            class="text-sm text-gray-700 hover:text-gray-900 font-medium ml-2 cursor-pointer bg-transparent border-none">
+            Limpiar filtros
+          </button>
+        </div>
+
+        <div *ngIf="visibleServices.length > 0; else noResults">
+
+          <div class="flex flex-col gap-4">
+            <app-service-card
+            *ngFor="let service of visibleServices"
+            [data]="service">
+            </app-service-card>
+          </div>
 
             <div class="mt-8 flex justify-center">
                 <p-paginator
@@ -208,8 +240,34 @@
                     styleClass="bg-transparent border-none">
                 </p-paginator>
             </div>
-        </main>
+        </div>
+
+        <ng-template #noResults>
+
+          <div class="flex flex-col items-center justify-center py-16 px-4 text-center bg-white border border-gray-100 rounded-lg shadow-sm mt-2">
+            <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
+              <i class="pi pi-search text-2xl text-gray-400"></i>
+            </div>
+
+            <h3 class="text-lg font-bold text-gray-900 mb-1">No se encontraron resultados</h3>
+            <p class="text-sm text-gray-500 max-w-sm mb-6">
+              No hay especialistas que coincidan con los filtros actuales. Intenta desmarcar algunas opciones para ver más resultados.
+            </p>
+
+            <button
+              pButton
+              label="Limpiar todo"
+              icon="pi pi-filter-slash"
+              [outlined]="true"
+              class="text-sm font-bold text-gray-700 border-gray-300 hover:bg-gray-50 h-10 px-4 rounded-md transition-colors"
+              (click)="clearFilters()">
+            </button>
+
+          </div>
+
+        </ng-template>
+      </main>
     </div>
-</div>
+  </div>
 
 <app-footer></app-footer>
