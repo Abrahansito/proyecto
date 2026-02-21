@@ -82,11 +82,51 @@ export class Home implements OnInit {
 
   //Opciones de ordenamiento
   sortOptions = [
-    { label: 'Más popular', value: 'pop' },
+    { label: 'Más popular', value: 'popular' },
     { label: 'Mejor valorado', value: 'rating' },
-    { label: 'Más reciente', value: 'new' },
+    { label: 'Más reciente', value: 'recent' },
   ];
-  selectedSort: string = 'pop';//Valor por defecto para el ordenamiento
+  selectedSort: string = 'popular';//Valor por defecto para el ordenamiento
+
+  //Función para aplicar el ordenamiento seleccionado
+  applySorting() {
+      //Ordenamos el arreglo que actualmente se está mostrando en pantalla
+      if (this.selectedSort === 'popular') {
+          //Ordena de mayor a menor según la cantidad de valoraciones/reviews
+          this.visibleServices.sort((a, b) => (b.reviews || 0) - (a.reviews || 0));
+
+      } else if (this.selectedSort === 'rating') {
+          //Ordena de mayor a menor según las estrellas (4.9, 4.8, etc.)
+          this.visibleServices.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+
+      } else if (this.selectedSort === 'recent') {
+          //Aquí asumo que el arreglo original "allServices" ya está ordenado de más reciente a más antiguo, por lo que simplemente reasigno el orden a visibleServices
+          this.visibleServices = [...this.visibleServices].sort((a, b) => {
+              const indexA = this.allServices.findIndex(s => s.name === a.name);
+              const indexB = this.allServices.findIndex(s => s.name === b.name);
+              return indexA - indexB; //Orden original basado en allServices
+          });
+      }
+
+      //Regresamos a la página 1 después de reordenar
+      this.first = 0;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   constructor() {}//El constructor se mantiene vacío, ya que no necesitamos inicializar nada al crear la instancia del componente
 
@@ -138,6 +178,8 @@ applyFilters() {
       });
 
       this.totalRecords = this.visibleServices.length;
+      this.applySorting();//Aplicamos el ordenamiento actual a la lista filtrada
+
       this.first = 0; // Regresar a página 1
   }
 

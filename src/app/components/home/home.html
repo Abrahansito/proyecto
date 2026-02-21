@@ -184,6 +184,7 @@
                 <p-select
                   [options]="sortOptions"
                   [(ngModel)]="selectedSort"
+                  (onChange)="applySorting()"
                   optionLabel="label"
                   optionValue="value"
                   styleClass="border-none shadow-none bg-transparent p-0 h-auto flex items-center gap-1"
