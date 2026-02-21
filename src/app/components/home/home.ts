@@ -52,7 +52,6 @@ export class Home implements OnInit {
   }
 
 
-
   //checked: any = null;//Variable para almacenar el valor del filtro de verificado (checkbox)
   selectedRating: any = null;//Variable para almacenar el valor del filtro de calificación
 
@@ -111,21 +110,6 @@ export class Home implements OnInit {
       //Regresamos a la página 1 después de reordenar
       this.first = 0;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   constructor() {}//El constructor se mantiene vacío, ya que no necesitamos inicializar nada al crear la instancia del componente
