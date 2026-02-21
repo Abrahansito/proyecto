@@ -269,7 +269,8 @@ clearFilters() {
   //Lista de servicios disponibles
   allServices = [
     {
-      name: 'Alev Constructores "Complementos para la construcción"',
+      name: 'Alev Constructores ',
+      lema: "Complementos para la construcción",
       title: 'Construcción de viviendas, remodelaciones, ampliaciones entre otros proyectos',
       image: 'imagen/imagen1_1.jpg',
       rating: 4.9,
@@ -281,7 +282,8 @@ clearFilters() {
       payment: 'Efectivo'
     },
     {
-      name: 'TechBuild Perú "Técnicos en Construcción Civil"',
+      name: 'TechBuild Perú',
+      lema: "Técnicos en Construcción Civil",
       title: 'Especialistas en estructuras y acabados de alta calidad',
       image: 'imagen/imagen2_2.jpg',
       rating: 4.8,
@@ -293,7 +295,8 @@ clearFilters() {
       payment: 'Efectivo'
     },
     {
-        name: 'Arquitectura Total "Diseño y Construcción Integral"',
+        name: 'Arquitectura Total ',
+        lema: "Diseño y Construcción Integral",
         title: 'Proyectos arquitectónicos completos desde el diseño hasta la ejecución',
         image: 'imagen/imagen3_3.jpg',
         rating: 4.7,
@@ -305,7 +308,8 @@ clearFilters() {
         payment: 'Efectivo'
       },
       {
-      name: 'Construye Fácil "Remodelaciones Express"',
+      name: 'Construye Fácil',
+      lema: "Remodelaciones Express",
       title: 'Remodelaciones rápidas y eficientes para hogares y oficinas',
       image: 'imagen/imagen4_4.jpg',
       rating: 4.6,
@@ -317,7 +321,8 @@ clearFilters() {
       payment: 'Efectivo'
     },
     {
-      name: 'Ingeniería & Proyectos "Ingenieros Civiles Especializados"',
+      name: 'Ingeniería & Proyectos',
+      lema: "Ingenieros Civiles Especializados",
       title: 'Cálculo estructural y supervisión de obras civiles',
       image: 'imagen/imagen5_5.jpg',
       rating: 5,
@@ -329,7 +334,8 @@ clearFilters() {
       payment: 'Transferencia Bancaria'
     },
     {
-        name: 'Acabados Premium "Especialistas en Acabados"',
+        name: 'Acabados Premium',
+        lema: "Especialistas en Acabados",
         title: 'Trabajos de pintura, drywall y acabados finos',
         image: 'imagen/imagen6_6.jpg',
         rating: 4.5,
@@ -341,7 +347,8 @@ clearFilters() {
         payment: 'Efectivo'
       },
       {
-      name: 'Electricidad Segura "Instalaciones Eléctricas"',
+      name: 'Electricidad Segura',
+      lema: "Instalaciones Eléctricas",
       title: 'Instalación y mantenimiento eléctrico residencial e industrial',
       image: 'imagen/imagen7_7.jpg',
       rating: 4.8,
@@ -353,7 +360,8 @@ clearFilters() {
       payment: 'Efectivo'
     },
     {
-      name: 'Fontanería Moderna "Servicios de Fontanería"',
+      name: 'Fontanería Moderna',
+      lema: "Servicios de Fontanería",
       title: 'Reparación e instalación de tuberías y sistemas de agua',
       image: 'imagen/imagen8_8.jpg',
       rating: 4.4,
@@ -365,19 +373,21 @@ clearFilters() {
       payment: 'Efectivo'
     },
     {
-        name: 'Techos & Estructuras "Especialistas en Techos"',
-        title: 'Construcción y reparación de techos de todo tipo',
-        image: 'imagen/imagen9_9.jpg',
-        rating: 4.7,
-        reviews: 123,
-        verified: true,
-        hours: '6 horas',
-        languages: 'Español',
-        location: 'Villa El Salvador • Villa El Salvador, Villa María, San Juan de Miraflores',
-        payment: 'Efectivo'
+      name: 'Techos & Estructuras',
+      lema: "Especialistas en Techos",
+      title: 'Construcción y reparación de techos de todo tipo',
+      image: 'imagen/imagen9_9.jpg',
+      rating: 4.7,
+      reviews: 123,
+      verified: true,
+      hours: '6 horas',
+      languages: 'Español',
+      location: 'Villa El Salvador • Villa El Salvador, Villa María, San Juan de Miraflores',
+      payment: 'Efectivo'
       },
       {
-      name: 'Pisos & Porcelanatos "Instalación de Pisos"',
+      name: 'Pisos & Porcelanatos',
+      lema: "Instalación de Pisos",
       title: 'Colocación de porcelanatos, madera y pisos flotantes',
       image: 'imagen/imagen10_10.jpg',
       rating: 4.9,
@@ -389,7 +399,8 @@ clearFilters() {
       payment: 'Efectivo'
     },
     {
-        name: 'Carpintería Artesanal "Muebles a Medida"',
+        name: 'Carpintería Artesanal',
+        lema: "Muebles a Medida",
         title: 'Diseño y fabricación de muebles de madera personalizados',
         image: 'imagen/imagen11_11.jpg',
         rating: 4.8,
@@ -401,7 +412,8 @@ clearFilters() {
         payment: 'Efectivo'
       },
       {
-        name: 'Vidriería Express "Trabajos en Vidrio"',
+        name: 'Vidriería Express',
+        lema: "Trabajos en Vidrio",
         title: 'Cortado, instalación y reparación de vidrios y espejos',
         image: 'imagen/imagen12_12.jpg',
         rating: 4.6,
@@ -413,7 +425,8 @@ clearFilters() {
         payment: 'Efectivo'
       },
       {
-        name: 'Climatización Total "Instalación de Aire Acondicionado"',
+        name: 'Climatización Total',
+        lema: "Instalación de Aire Acondicionado",
         title: 'Venta e instalación de sistemas de climatización',
         image: 'imagen/imagen13_13.jpg',
         rating: 4.7,
@@ -425,7 +438,8 @@ clearFilters() {
         payment: 'Efectivo'
       },
       {
-        name: 'Albañilería Profesional "Trabajos de Albañilería"',
+        name: 'Albañilería Profesional',
+        lema: "Trabajos de Albañilería",
         title: 'Construcción de muros, tabiques y obras de albañilería',
         image: 'imagen/imagen14_14.jpg',
         rating: 4.5,
@@ -437,7 +451,8 @@ clearFilters() {
         payment: 'Efectivo'
       },
       {
-        name: 'Jardinería & Paisajismo "Diseño de Jardines"',
+        name: 'Jardinería & Paisajismo',
+        lema: "Diseño de Jardines",
         title: 'Diseño, instalación y mantenimiento de áreas verdes',
         image: 'imagen/imagen15_15.jpg',
         rating: 4.9,
@@ -449,7 +464,8 @@ clearFilters() {
         payment: 'Efectivo'
       },
       {
-        name: 'Gasfitería Integral "Servicios de Gasfitería"',
+        name: 'Gasfitería Integral',
+        lema: "Servicios de Gasfitería",
         title: 'Instalación y reparación de sistemas de gas y agua',
         image: 'imagen/imagen16_16.jpg',
         rating: 4.6,
@@ -461,7 +477,8 @@ clearFilters() {
         payment: 'Efectivo'
       },
       {
-        name: 'Cerrajería Segura "Cerrajería Profesional"',
+        name: 'Cerrajería Segura',
+        lema: "Cerrajería Profesional",
         title: 'Instalación y reparación de cerraduras y sistemas de seguridad',
         image: 'imagen/imagen17_17.jpg',
         rating: 4.8,
@@ -473,7 +490,8 @@ clearFilters() {
         payment: 'Efectivo'
       },
       {
-        name: 'Pintura Decorativa "Pintura de Interiores y Exteriores"',
+        name: 'Pintura Decorativa',
+        lema: "Pintura de Interiores y Exteriores",
         title: 'Trabajos de pintura con técnicas decorativas modernas',
         image: 'imagen/imagen18_18.jpg',
         rating: 4.7,
@@ -485,7 +503,8 @@ clearFilters() {
         payment: 'Efectivo'
       },
       {
-        name: 'Drywall Expert "Instalación de Drywall"',
+        name: 'Drywall Expert',
+        lema: "Instalación de Drywall",
         title: 'Trabajos en drywall, cielos rasos y tabiquería',
         image: 'imagen/imagen19_19.jpg',
         rating: 4.5,
@@ -497,7 +516,8 @@ clearFilters() {
         payment: 'Efectivo'
       },
       {
-      name: 'Impermeabilización Total "Impermeabilización de Techos"',
+      name: 'Impermeabilización Total',
+      lema: "Impermeabilización de Techos",
       title: 'Sistemas de impermeabilización para techos y terrazas',
       image: 'imagen/imagen20_20.jpg',
       rating: 4.9,
