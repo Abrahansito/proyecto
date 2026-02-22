@@ -4,13 +4,13 @@
   <div class="w-full mx-auto px-4 sm:px-4 py-4 flex flex-col md:flex-row gap-4 items-start">
 
     <aside class="w-full md:w-3 shrink-0">
-      <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+      <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
 
         <div class="flex flex-col gap-1 mb-5">
           <div class="flex items-center gap-3">
             <p-checkbox [(ngModel)]="onlyVerified" [binary]="true" inputId="verifiedCheck" (onChange)="applyFilters()"></p-checkbox>
             <label for="verifiedCheck" class="cursor-pointer select-none flex items-center gap-2">
-              <div class="bg-blue-50 border border-blue-100 text-blue-600 px-2 py-0.5 rounded-md flex items-center gap-1.5">
+              <div class="bg-blue-50 border-blue-100 text-blue-600 px-2 py-0.5 rounded-md flex items-center gap-1.5">
                 <i class="pi pi-check-circle text-sm font-bold"></i>
                 <span class="text-sm font-bold">Verificado</span>
               </div>
@@ -24,25 +24,25 @@
 
         <div class="mb-4">
             <div (click)="toggleSection('services')" class="flex items-center justify-between cursor-pointer mb-3 select-none group">
-                <h4 class="font-bold text-gray-900 text-base">Servicios</h4>
-                <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
+                <h4 class="font-semibold text-gray-900 text-base">Servicios</h4>
+                <i class="pi pi-chevron-down text-sm text-gray-900 transition-transform duration-200"
                    [class.rotate-180]="sections.services"></i>
             </div>
 
             <div [class.hidden]="!sections.services">
                 <div class="mb-4">
                     <p-iconfield iconPosition="left" styleClass="w-full">
-                        <p-inputicon styleClass="pi pi-search text-gray-400" />
-                        <input type="text" pInputText placeholder="Buscar servicios" [(ngModel)]="searchServiceText" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400" />
+                        <p-inputicon styleClass="pi pi-search text-gray-600" />
+                        <input type="text" pInputText placeholder="Buscar servicios" [(ngModel)]="searchServiceText" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400 placeholder:text-gray-600"/>
                     </p-iconfield>
                 </div>
                 <div class="space-y-1 mt-3">
                     <div *ngFor="let item of filteredServices | slice:0:(showAllServices ? filteredServices.length : 5)" class="flex items-center justify-between p-1.5 rounded-md hover:bg-gray-50 cursor-pointer">
                         <div class="flex items-center gap-3 overflow-hidden">
                             <p-checkbox [binary]="true" [(ngModel)]="item.selected" (onChange)="applyFilters()"></p-checkbox>
-                            <span class="text-sm text-gray-700 truncate" [class.font-bold]="item.selected">{{ item.label }}</span>
+                            <span class="text-sm text-gray-800 truncate" [class.font-bold]="item.selected">{{ item.label }}</span>
                         </div>
-                        <span class="text-xs text-gray-500">({{ item.count }})</span>
+                        <span class="text-sm text-gray-600">({{ item.count }})</span>
                     </div>
                 </div>
 
@@ -60,23 +60,23 @@
 
         <div class="mb-4">
             <div (click)="toggleSection('districts')" class="flex items-center justify-between cursor-pointer mb-3 select-none">
-                <h4 class="font-bold text-gray-900 text-base">Distritos</h4>
-                <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
+                <h4 class="font-semibold text-gray-900 text-base">Distritos</h4>
+                <i class="pi pi-chevron-down text-sm text-gray-900 transition-transform duration-200"
                    [class.rotate-180]="sections.districts"></i>
             </div>
 
             <div [class.hidden]="!sections.districts">
                  <p-iconfield iconPosition="left" styleClass="w-full mb-3">
-                    <p-inputicon styleClass="pi pi-search text-gray-400" />
-                    <input type="text" pInputText placeholder="Buscar distritos" [(ngModel)]="searchDistrictText" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400" />
+                    <p-inputicon styleClass="pi pi-search text-gray-600" />
+                    <input type="text" pInputText placeholder="Buscar distritos" [(ngModel)]="searchDistrictText" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400 placeholder:text-gray-600"/>
                 </p-iconfield>
-                <div class="space-y-1 text-sm text-gray-600">
+                <div class="space-y-1 text-sm text-gray-800">
                   <div *ngFor="let item of filteredDistricts" class="flex justify-between p-1 hover:bg-gray-50 cursor-pointer">
                     <div class="flex items-center gap-2 overflow-hidden">
                       <p-checkbox [binary]="true" [(ngModel)]="item.selected" (onChange)="applyFilters()"></p-checkbox>
                       <span class="truncate" [class.font-bold]="item.selected">{{ item.label }}</span>
                     </div>
-                    <span class="text-xs text-gray-400 shrink-0">({{ item.count }})</span>
+                    <span class="text-sm text-gray-600 shrink-0">({{ item.count }})</span>
                   </div>
                 </div>
             </div>
@@ -86,8 +86,8 @@
 
         <div class="mb-4">
             <div (click)="toggleSection('rating')" class="flex items-center justify-between cursor-pointer mb-3 select-none">
-                <h4 class="font-bold text-gray-900 text-base">Calificación</h4>
-                <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
+                <h4 class="font-semibold text-gray-900 text-base">Calificación</h4>
+                <i class="pi pi-chevron-down text-sm text-gray-900 transition-transform duration-200"
                    [class.rotate-180]="sections.rating"></i>
             </div>
 
@@ -100,7 +100,7 @@
                             <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i>
                         </label>
                     </div>
-                    <span class="text-xs text-gray-500">(974)</span>
+                    <span class="text-sm text-gray-600">(974)</span>
                 </div>
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
@@ -110,7 +110,7 @@
                             <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star text-gray-300"></i>
                         </label>
                     </div>
-                    <span class="text-xs text-gray-500">(2184)</span>
+                    <span class="text-sm text-gray-600">(2184)</span>
                 </div>
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
@@ -120,7 +120,7 @@
                             <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star text-gray-300"></i><i class="pi pi-star text-gray-300"></i>
                         </label>
                     </div>
-                    <span class="text-xs text-gray-500">(5184)</span>
+                    <span class="text-sm text-gray-600">(5184)</span>
                 </div>
             </div>
         </div>
@@ -129,17 +129,17 @@
 
         <div class="mb-4">
             <div (click)="toggleSection('payment')" class="flex items-center justify-between cursor-pointer mb-3 select-none">
-                <h4 class="font-bold text-gray-900 text-base">Métodos de Pago</h4>
-                <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
+                <h4 class="font-semibold text-gray-900 text-base">Métodos de Pago</h4>
+                <i class="pi pi-chevron-down text-sm text-gray-900 transition-transform duration-200"
                    [class.rotate-180]="sections.payment"></i>
             </div>
-            <div [class.hidden]="!sections.payment" class="space-y-2 text-sm text-gray-600">
+            <div [class.hidden]="!sections.payment" class="space-y-2 text-sm text-gray-800">
               <div *ngFor="let item of paymentCategories" class="flex justify-between p-1 hover:bg-gray-50 cursor-pointer">
                 <div class="flex items-center gap-2 overflow-hidden">
                   <p-checkbox [binary]="true" [(ngModel)]="item.selected" (onChange)="applyFilters()"></p-checkbox>
                   <span class="truncate" [class.font-bold]="item.selected">{{ item.label }}</span>
                 </div>
-                <span class="text-xs text-gray-400 shrink-0">({{ item.count }})</span>
+                <span class="text-sm text-gray-600 shrink-0">({{ item.count }})</span>
               </div>
             </div>
 
@@ -149,22 +149,22 @@
 
         <div>
             <div (click)="toggleSection('languages')" class="flex items-center justify-between cursor-pointer mb-3 select-none">
-                <h4 class="font-bold text-gray-900 text-base">Idiomas</h4>
-                <i class="pi pi-chevron-down text-xs text-gray-400 transition-transform duration-200"
+                <h4 class="font-semibold text-gray-900 text-base">Idiomas</h4>
+                <i class="pi pi-chevron-down text-sm text-gray-900 transition-transform duration-200"
                    [class.rotate-180]="sections.languages"></i>
             </div>
             <div [class.hidden]="!sections.languages">
                  <p-iconfield iconPosition="left" styleClass="w-full mb-3">
-                    <p-inputicon styleClass="pi pi-search text-gray-400" />
-                    <input type="text" pInputText placeholder="Buscar idiomas" [(ngModel)]="searchLenguageText" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400"/>
+                    <p-inputicon styleClass="pi pi-search text-gray-600" />
+                    <input type="text" pInputText placeholder="Buscar idiomas" [(ngModel)]="searchLenguageText" class="w-full text-sm h-10 pl-10 border-gray-400 rounded-md border focus:border-yellow-400 placeholder:text-gray-600"/>
                 </p-iconfield>
-                  <div class="space-y-1 text-sm text-gray-600">
+                  <div class="space-y-1 text-sm text-gray-800">
                     <div *ngFor="let item of filteredLanguages" class="flex justify-between p-1 hover:bg-gray-50 cursor-pointer">
                       <div class="flex items-center gap-2 overflow-hidden">
                         <p-checkbox [binary]="true" [(ngModel)]="item.selected" (onChange)="applyFilters()"></p-checkbox>
                         <span class="truncate" [class.font-bold]="item.selected">{{ item.label }}</span>
                       </div>
-                      <span class="text-xs text-gray-400 shrink-0">({{ item.count }})</span>
+                      <span class="text-sm text-gray-600 shrink-0">({{ item.count }})</span>
                     </div>
 
                 </div>
@@ -176,10 +176,10 @@
 
         <main class="flex-1 min-w-0 w-full"><br>
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
-                <h2 class="text-lg font-bold text-gray-900">+{{ totalRecords }} resultados disponibles para "gasfitero"</h2>
+                <h2 class="text-lg font-semibold text-gray-900">+{{ totalRecords }} resultados disponibles para "gasfitero"</h2>
 
                 <div class="flex items-center gap-2 self-start sm:self-auto">
-                  <span class="text-sm text-gray-900">Ordenar por:</span>
+                  <span class="text-sm font-semibold text-gray-700">Ordenar por</span>
 
                 <p-select
                   [options]="sortOptions"
@@ -192,7 +192,7 @@
 
                   <ng-template pTemplate="selectedItem" let-selectedOption>
                     <div class="flex items-center gap-1 cursor-pointer hover:text-yellow-600 transition-colors">
-                      <span class="font-bold text-gray-900 text-sm">
+                      <span class="font-semibold text-gray-900 text-sm">
                         {{ selectedOption ? selectedOption.label : 'Seleccionar' }}
                       </span>
                     </div>

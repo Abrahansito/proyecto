@@ -61,9 +61,16 @@
     transition: background-color 0.2s, color 0.2s;
 }
 
-/*Hover suave en los números no seleccionados */
+/*Hover suave en los números no seleccionados*/
 :host ::ng-deep .p-paginator .p-paginator-page:not(.p-highlight):not(.p-paginator-page-selected):hover {
-    background-color: #c5d2ee !important;
+    background-color: #c8d3eb !important;
+    color: #272411 !important;
+}
+
+/*Hover suave en las flechitas Anterior y Siguiente*/
+:host ::ng-deep .p-paginator .p-paginator-prev:not(.p-disabled):hover,
+:host ::ng-deep .p-paginator .p-paginator-next:not(.p-disabled):hover {
+    background-color: #c8d3eb !important;
     color: #272411 !important;
 }
 
@@ -123,7 +130,6 @@
     width: 1.5rem;
     color: #6b7280;
 }
-
 
 
 

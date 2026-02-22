@@ -11,3 +11,8 @@
         padding-right: 4rem !important;
     }
 }
+
+/*Ocultar la ruedita de carga por defecto del AutoComplete*/
+:host ::ng-deep .p-autocomplete .p-autocomplete-loader {
+    display: none !important;
+}
